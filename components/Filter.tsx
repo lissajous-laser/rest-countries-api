@@ -10,16 +10,20 @@ import style from '../styles/Filter.module.scss';
 
 
 const options: {value: Region, label: string}[] = [
-  {value: 'all', label: 'Filter by Region'},
-  {value: 'africa', label: 'Africa'},
-  {value: 'america', label: 'America'},
-  {value: 'asia', label: 'Asia'},
-  {value: 'europe', label: 'Europe'},
-  {value: 'oceania', label: 'Oceania'}
+  {value: 'All', label: 'Filter by Region'},
+  {value: 'Africa', label: 'Africa'},
+  {value: 'Americas', label: 'America'},
+  {value: 'Asia', label: 'Asia'},
+  {value: 'Europe', label: 'Europe'},
+  {value: 'Oceania', label: 'Oceania'}
 ];
 
-export default function Filter({isDark, setRegion}
-  : {isDark: boolean, setRegion: Dispatch<SetStateAction<Region>>}
+export default function Filter({isDark, region, setRegion, searchTerm, setSearchTerm}: {
+  isDark: boolean,
+  region: Region,
+  setRegion: Dispatch<SetStateAction<Region>>,
+  searchTerm: string,
+  setSearchTerm: Dispatch<SetStateAction<string>>}
 ) {
 
   return (
@@ -48,6 +52,8 @@ export default function Filter({isDark, setRegion}
           }
           type='text'
           placeholder='Search for a country...'
+          onChange={(event) => setSearchTerm(event.target.value)}
+          // value={searchTerm}
         />
       </div>
       {/* <select className={`${style.dropDown} ${mulish.className}`}>
@@ -66,6 +72,11 @@ export default function Filter({isDark, setRegion}
         `}
         options={options}
         defaultValue={options[0]}
+        onChange={(event) => {
+          if (event !== null) {
+            setRegion(event.value);
+          }
+        }}
         styles={{
           control: (baseStyles, state) => ({
             ...baseStyles,
@@ -76,7 +87,7 @@ export default function Filter({isDark, setRegion}
             fontSize: 14,
             fontWeight: 600,
             backgroundColor: isDark ? 'rgb(43, 55, 67)' : 'white',
-            borderRadius: 4
+            borderRadius: 3
             // color: isDark ? 'white' : 'black',
             // outline: 'none',
           }),

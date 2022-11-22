@@ -4,7 +4,13 @@ export type Country = {
   region: string,
   capital: string,
   flags: {svg: string},
+  subregion: string,
+  topLevelDomain: string[],
+  currencies: {name: string}[],
+  languages: {name: string}[],
+  borders: string[],
+  alpha3Code: string
 }
 
 export type Region =
-  'all' | 'africa' | 'america' | 'asia' | 'europe' | 'oceania';
+  'All' | 'Africa' | 'Americas' | 'Asia' | 'Europe' | 'Oceania';
