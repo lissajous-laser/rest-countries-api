@@ -1,0 +1,42 @@
+@use './constants';
+
+.cardContainer {
+  color: constants.$black;
+  border-radius: constants.$border-r;
+  background-color: white;
+  width: 264px;
+  height: 336px;
+  // border: 1px solid gray;
+  box-shadow: 0 0 10px rgba(191, 191, 191, 0.5);
+}
+
+.cardContainerDark {
+  @extend .cardContainer;
+  color: white;
+  background-color: constants.$gray-blue;
+  box-shadow: 0 0 10px rgba(31, 31, 31, 0.4);
+}
+
+.flag {
+  object-fit: cover;
+  border-radius: constants.$border-r constants.$border-r 0 0;
+}
+
+.heading {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.textContainer {
+  margin: 21px 24px 0;
+}
+
+.stat {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.statName {
+  font-weight: 600;
+}

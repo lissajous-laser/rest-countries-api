@@ -1,0 +1,84 @@
+@use './constants';
+
+.filterContainer {
+  padding-left: 80px;
+  padding-right: 80px;
+  margin-top: 48px;
+  margin-bottom: 48px;
+  display: flex;
+  justify-content: space-between;
+  background-color: constants.$off-white;
+}
+
+.filterContainerDark {
+  background-color: constants.$dark-gray-blue;
+}
+
+
+
+.textInput {
+  border-width: 0;
+  height: 56px;
+  background-color: white;
+  color: constants.$black;
+  font-size: 14px;
+  flex-grow: 1;
+}
+
+.textInputDark {
+  background-color: constants.$gray-blue;
+  color: white;
+}
+
+.textInput:focus {
+  outline: 0;
+}
+
+.searchIcon {
+  height: 18px;
+  width: 64px;
+  padding-left: auto;
+  padding-right: auto;
+}
+
+.searchIconAndInput {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: constants.$border-r;
+  height: 56px;
+  box-shadow: 0 0 10px rgba(191, 191, 191, 0.6);
+  padding-left: 8px;
+  padding-right: 8px;
+  width: 480px;
+}
+
+.searchIconAndInputDark {
+  background-color: constants.$gray-blue;
+  box-shadow: 0 0 10px rgba(31, 31, 31, 0.5);
+}
+
+.searchIconAndInput:focus-within {
+  outline: 1px solid constants.$black;
+}
+
+.dropDown {
+  // height: 56px;
+  // width: 200px;
+  // border: none;
+  background-color: white;
+  color: constants.$black;
+  box-shadow: 0 0 10px rgba(191, 191, 191, 0.6);
+  border-radius: constants.$border-r;
+  // padding-left: 24px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.dropDownDark {
+  box-shadow: 0 0 10px rgba(31, 31, 31, 0.5);
+}
+
+.dropDown:focus {
+  outline: 1px solid constants.$black;
+}

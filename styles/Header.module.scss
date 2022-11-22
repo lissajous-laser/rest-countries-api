@@ -1,0 +1,56 @@
+@use './constants';
+
+.headerContainer {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  place-items: center;
+  padding-left: 80px;
+  padding-right: 80px;
+  box-shadow: 0 0 10px rgba(191, 191, 191, 0.7);
+  background-color: constants.$off-white;
+  color: constants.$black;
+}
+
+.headerContainerDark {
+  background-color: constants.$gray-blue;
+  color: white;
+  box-shadow: 0 0 10px rgba(31, 31, 31, 0.6);
+}
+
+.crescent {
+  height: 16px;
+  width: 16px;
+  display: block;
+}
+
+.button {
+  background-color: constants.$off-white;
+  border: none;
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 120px;
+  color: constants.$black;
+
+}
+
+.buttonDark {
+  background-color: constants.$gray-blue;
+  color: white;
+}
+
+.button:hover {
+  cursor: pointer;
+
+}
+
+.btnText {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.h1 {
+  font-size: 24px;
+}
