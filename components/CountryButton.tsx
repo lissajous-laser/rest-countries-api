@@ -14,7 +14,7 @@ export default function CountryButton({isDark, country, setCountry}: {
 }) {
   return (
     <button
-      className={`${style.button} ${mulish.className}`}
+      className={`${style.btn} ${mulish.className} ${isDark ? style.btnDark : ''}`}
       onClick={() => setCountry(country)}
     >
       {country.name}

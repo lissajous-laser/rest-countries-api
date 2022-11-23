@@ -1,6 +1,6 @@
 @use './constants';
 
-.button {
+.btn {
   width: 96px;
   height: 28px;
   white-space: nowrap;
@@ -16,4 +16,10 @@
   font-weight: 300;
   padding-left: 8px;
   padding-right: 8px;
+}
+
+.btnDark {
+  background-color: constants.$gray-blue;
+  color: white;
+  box-shadow: 0 0 10px rgba(31, 31, 31, 0.4);
 }

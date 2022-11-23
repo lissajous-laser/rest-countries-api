@@ -1,12 +1,18 @@
 import Image from 'next/image';
 import {Dispatch, SetStateAction} from 'react';
-import leftArrowBlack from '../public/images/left-arrow-black.svg';
+import leftArrowLight from '../public/images/left-arrow-black.svg';
+import leftArrowDark from '../public/images/left-arrow-white.svg';
 import {mulish} from '../resources/fonts';
 import {Country} from '../resources/types';
 import style from '../styles/CountryView.module.scss';
 import CountryButton from './CountryButton';
 
-export default function CountryView({isDark, country, setCountry, countriesList} : {
+export default function CountryView({
+  isDark, 
+  country, 
+  setCountry, 
+  countriesList
+} : {
   isDark: boolean,
   country: Country,
   setCountry: Dispatch<SetStateAction<Country | null>>,
@@ -38,15 +44,24 @@ export default function CountryView({isDark, country, setCountry, countriesList}
   } 
 
   return (
-    <div className={style.viewContainer}>
+    <div
+      className={`
+        ${style.viewContainer}
+        ${isDark? style.viewContainerDark : ''}
+      `}
+    >
       <div className={style.xPadding}>
         <button
-          className={`${style.button} ${mulish.className}`}
+          className={`
+            ${style.backBtn}
+            ${mulish.className}
+            ${isDark ? style.backBtnDark : ''}
+          `}
           onClick={() => setCountry(null)}
         >
           <Image
             className={style.arrow}
-            src={leftArrowBlack}
+            src={isDark ? leftArrowDark : leftArrowLight}
             alt='Back icon'
           />
           <div>Back</div>
@@ -59,7 +74,7 @@ export default function CountryView({isDark, country, setCountry, countriesList}
             width={560}
             height={400}
           />
-          <div className={style.text}>
+          <div className={`${style.text} ${isDark? style.textDark : ''}`}>
             <h2 className={style.heading}>{country.name}</h2>
             <div className={style.columns}>
               <div className={style.columnL}>

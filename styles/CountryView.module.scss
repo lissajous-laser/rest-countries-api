@@ -9,12 +9,16 @@
   position: fixed;
 }
 
+.viewContainerDark {
+  background-color: constants.$dark-gray-blue;
+}
+
 .xPadding {
   width: 1280px;
   margin: 0px auto;
 }
 
-.button {
+.backBtn {
   margin-top: 160px;
   margin-bottom: 80px;
   width: 136px;
@@ -34,6 +38,12 @@
 
 }
 
+.backBtnDark {
+  background-color: constants.$gray-blue;
+  color: white;
+  box-shadow: 0 0 10px rgba(31, 31, 31, 0.5);
+}
+
 .flagAndText {
   display: flex;
   justify-content: space-between;
@@ -46,7 +56,10 @@
 .text {
   width: 600px;
   color: constants.$black;
+}
 
+.text {
+  color: white;
 }
 
 .heading {
