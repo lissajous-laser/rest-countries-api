@@ -1,13 +1,13 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import {useLayoutEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import Card from '../components/Card';
 import Header from '../components/Header';
 import Filter from '../components/Filter';
 import {mulish} from '../resources/fonts';
 import {Country, Region} from '../resources/types';
 import style from '../styles/Home.module.scss';
-import { count } from 'console';
+import CountryView from '../components/CountryView';
 
 
 
@@ -16,15 +16,29 @@ export default function Home() {
   const [countriesList, setCountriesList] = useState<Country[]>([]);
   const [isDark, setIsDark] = useState<boolean>(false);
   const [region, setRegion] = useState<Region>('All');
+  // State for the search bar
   const [searchTerm, setSearchTerm] = useState<string>('');
+  // State for the current country being displayed,
+  // null represents no selection.
+  const [country, setCountry] = useState<Country | null>(null);
 
-  useLayoutEffect(() => getCountries(2), []);
+  useEffect(() => fetchCountriesList(2), []);
+
+
+  // useEffect(() => {
+  //   if (country) {
+  //     document.body.style.overflow = 'hidden';
+  //   } else {
+  //     document.body.style.overflow = 'unset';
+  //   }
+  // }, [country]);
+
 
   /**
    * @param triesLeft - the max number of times to attempt
    * fetching from the API
    */
-  const getCountries = (triesLeft: number = 1) => {
+  const fetchCountriesList = (triesLeft: number = 1) => {
     // const maybeCountriesList = await fetch('https://restcountries.com/v2/all');
     // if (maybeCountriesList.ok) {
     //   const jsonCountriesList = await maybeCountriesList.json();
@@ -41,7 +55,7 @@ export default function Home() {
       }).then((resolved) => {
         setCountriesList(resolved);
       }).catch(() => {
-        getCountries(triesLeft - 1)
+        fetchCountriesList(triesLeft - 1)
       });
   }
 
@@ -70,6 +84,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header isDark={isDark} setIsDark={setIsDark}/>
+      {country !== null && 
+        <CountryView
+          isDark={isDark}
+          country={country}
+          setCountry={setCountry}
+          countriesList={countriesList}
+        />
+      }
       <Filter
         isDark={isDark}
         region={region}
@@ -83,6 +105,7 @@ export default function Home() {
           country={country}
           key={country.name}
           priority={false}
+          setCountry={setCountry}
         />)}
       </div>
     </div>   

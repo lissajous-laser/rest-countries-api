@@ -1,0 +1,19 @@
+@use './constants';
+
+.button {
+  width: 96px;
+  height: 28px;
+  white-space: nowrap;
+  overflow: clip;
+  text-overflow: ellipsis;
+  background-color: white;
+  color: constants.$black;
+  border: none;
+  border-radius: constants.$border-r;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(191, 191, 191, 0.5);
+  font-size: 14px;
+  font-weight: 300;
+  padding-left: 8px;
+  padding-right: 8px;
+}

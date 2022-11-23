@@ -3,7 +3,7 @@
 .filterContainer {
   padding-left: 80px;
   padding-right: 80px;
-  margin-top: 48px;
+  padding-top: 128px;
   margin-bottom: 48px;
   display: flex;
   justify-content: space-between;
@@ -73,6 +73,7 @@
   // padding-left: 24px;
   font-size: 14px;
   font-weight: 400;
+  cursor: pointer;
 }
 
 .dropDownDark {

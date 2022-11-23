@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 1000 1000"
+   enable-background="new 0 0 1000 1000"
+   xml:space="preserve"
+   id="svg8"
+   sodipodi:docname="left-arrow-white.svg"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)"><defs
+   id="defs12" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1786"
+   inkscape:window-height="989"
+   id="namedview10"
+   showgrid="false"
+   inkscape:zoom="1.008"
+   inkscape:cx="500"
+   inkscape:cy="500"
+   inkscape:window-x="26"
+   inkscape:window-y="23"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="svg8" />
+<metadata
+   id="metadata2"> Svg Vector Icons : http://www.onlinewebfonts.com/icon <rdf:RDF><cc:Work
+     rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+       rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata>
+<g
+   id="g6"><path
+     d="M380.5,100.5l-350,350c-27.3,27.3-27.3,71.6,0,99l350,350c27.3,27.3,71.6,27.3,99,0c27.3-27.3,27.3-71.6,0-99L249,570h671c38.7,0,70-31.3,70-70c0-38.7-31.3-70-70-70H249l230.5-230.5c13.7-13.7,20.5-31.6,20.5-49.5c0-17.9-6.8-35.8-20.5-49.5C452.1,73.2,407.8,73.2,380.5,100.5z"
+     id="path4"
+     style="fill:#ffffff" /></g>
+</svg>

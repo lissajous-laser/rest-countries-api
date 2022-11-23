@@ -10,6 +10,10 @@
   box-shadow: 0 0 10px rgba(191, 191, 191, 0.7);
   background-color: constants.$off-white;
   color: constants.$black;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
 }
 
 .headerContainerDark {

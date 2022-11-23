@@ -1,15 +1,27 @@
 import Image from 'next/image';
+import {Dispatch, SetStateAction} from 'react';
 import {Country} from '../resources/types';
 import style from '../styles/Card.module.scss';
 
-export default function Card({isDark, country, priority} : {isDark: boolean, country: Country, priority: boolean}) {
-  const imageAlt = country.flags.svg + ' flag';
+export default function Card({isDark, country, priority, setCountry} : {
+  isDark: boolean,
+  country: Country,
+  priority: boolean,
+  setCountry: Dispatch<SetStateAction<Country | null>>
+}) {
+
   return (
-    <div className={`${style.cardContainer} ${isDark ? style.cardContainerDark : ''}`}>
+    <div
+      className={`
+        ${style.cardContainer}
+        ${isDark ? style.cardContainerDark : ''}
+      `}
+      onClick={() => setCountry(country)}
+    >
       <Image
         className={style.flag}
         src={country.flags.svg}
-        alt={imageAlt}
+        alt={'Flag of ' + country.name}
         width={264}
         height={160}
         priority={priority ? true : false}

@@ -56,14 +56,6 @@ export default function Filter({isDark, region, setRegion, searchTerm, setSearch
           // value={searchTerm}
         />
       </div>
-      {/* <select className={`${style.dropDown} ${mulish.className}`}>
-        <option value='' selected>Filter by Region</option>
-        <option value='1'>Africa</option>
-        <option value='2'>America</option>
-        <option value='3'>Asia</option>
-        <option value='4'>Europe</option>
-        <option value='5'>Oceania</option>
-      </select>  */}
       <Select
         className={`
           ${style.dropDown}

@@ -4,11 +4,12 @@ export type Country = {
   region: string,
   capital: string,
   flags: {svg: string},
+  nativeName: string,
   subregion: string,
   topLevelDomain: string[],
   currencies: {name: string}[],
   languages: {name: string}[],
-  borders: string[],
+  borders ? : string[],
   alpha3Code: string
 }
 
