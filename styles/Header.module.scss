@@ -58,3 +58,28 @@
 .h1 {
   font-size: 24px;
 }
+
+@media screen and (max-width: 720px) {
+
+  .headerContainer {
+    padding-left: 9.07%;
+    padding-right: 9.07%;
+  }
+
+  .h1 {
+    font-size: 14px;
+  }
+
+  .crescent {
+    width: 12px;
+    height: 12px;
+  }
+
+  .button {
+    width: 92px;
+  }
+
+  .btnText {
+    font-size: 12px;
+  }
+}

@@ -35,7 +35,7 @@
 }
 
 .searchIcon {
-  height: 18px;
+  height: 16px;
   width: 64px;
   padding-left: auto;
   padding-right: auto;
@@ -63,14 +63,11 @@
 }
 
 .dropDown {
-  // height: 56px;
-  // width: 200px;
-  // border: none;
+  width: 200px;
   background-color: white;
   color: constants.$black;
   box-shadow: 0 0 10px rgba(191, 191, 191, 0.6);
   border-radius: 5px;
-  // padding-left: 24px;
   font-size: 14px;
   font-weight: 400;
   cursor: pointer;
@@ -82,4 +79,33 @@
 
 .dropDown:focus {
   outline: 1px solid constants.$black;
+}
+
+@media screen and (max-width: 880px) {
+
+  .searchIconAndInput {
+    width: 343px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+
+  .filterContainer {
+    padding-top: 104px;
+    display: block;
+    margin-bottom: 32px;
+  }
+
+  .searchIconAndInput {
+    height: 48px;
+  }
+
+  .textInput {
+    font-size: 12px;
+    height: 48px;
+  }
+
+  .dropDown {
+    margin-top: 40px;
+  }
 }
