@@ -104,36 +104,38 @@ export default function Home() {
         <link rel='preconnect' href='https://flagcdn.com'/>
       </Head>
       <Header isDark={isDark} setIsDark={setIsDark}/>
-      {country !== null && 
-        <CountryView
-          isDark={isDark}
-          country={country}
-          setCountry={setCountry}
-          countriesList={countriesList}
-          winWidth={winWidth}
-        />
-      }
-      {country === null &&
-        <>
-          <Filter
+      <main>
+        {country !== null && 
+          <CountryView
             isDark={isDark}
-            region={region}
-            setRegion={setRegion}
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
+            country={country}
+            setCountry={setCountry}
+            countriesList={countriesList}
             winWidth={winWidth}
           />
-          <div className={style.gallery}>
-            {filterCountries().map((country, idx) => <Card
+        }
+        {country === null &&
+          <>
+            <Filter
               isDark={isDark}
-              country={country}
-              key={country.name}
-              priority={idx < 4 ? true : false} // reduce LCP time 
-              setCountry={setCountry}
-            />)}
-          </div>
-        </>
-      }
+              region={region}
+              setRegion={setRegion}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              winWidth={winWidth}
+            />
+            <div className={style.gallery}>
+              {filterCountries().map((country, idx) => <Card
+                isDark={isDark}
+                country={country}
+                key={country.name}
+                // priority={idx < 4 ? true : false} // reduce LCP time 
+                setCountry={setCountry}
+              />)}
+            </div>
+          </>
+        }
+      </main>
 
     </div>   
   );

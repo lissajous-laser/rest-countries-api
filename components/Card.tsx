@@ -3,10 +3,10 @@ import {Dispatch, SetStateAction} from 'react';
 import {Country} from '../resources/types';
 import style from '../styles/Card.module.scss';
 
-export default function Card({isDark, country, priority, setCountry} : {
+export default function Card({isDark, country, setCountry} : {
   isDark: boolean,
   country: Country,
-  priority: boolean,
+  // priority: boolean,
   setCountry: Dispatch<SetStateAction<Country | null>>
 }) {
 
@@ -24,7 +24,7 @@ export default function Card({isDark, country, priority, setCountry} : {
         alt={'Flag of ' + country.name}
         width={264}
         height={160}
-        priority={priority ? true : false}
+        // priority={priority ? true : false}
       />
       <div className={style.textContainer}>
         <h2 className={style.heading}>{country.name}</h2>
