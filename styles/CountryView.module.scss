@@ -1,25 +1,27 @@
 @use './constants';
 
 .viewContainer {
-  position: absolute;
   width: 100%;
   height: 100%;
   background-color: constants.$off-white;
   z-index: 1;
-  position: fixed;
+  // border: 1px solid brown;
+  // position: fixed;
 }
 
 .viewContainerDark {
   background-color: constants.$dark-gray-blue;
 }
 
-.xPadding {
-  width: 1280px;
+.pgPadding {
+  max-width: 1280px;
+  width: 88.89%;
   margin: 0px auto;
+  padding-top: 160px
+  // border: 1px solid yellow;
 }
 
 .backBtn {
-  margin-top: 160px;
   margin-bottom: 80px;
   width: 136px;
   height: 40px;
@@ -34,19 +36,21 @@
   border: none;
   border-radius: constants.$border-r;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(191, 191, 191, 0.6);
+  box-shadow: 0 0 10px constants.$light-shadow-5;
 
 }
 
 .backBtnDark {
   background-color: constants.$gray-blue;
   color: white;
-  box-shadow: 0 0 10px rgba(31, 31, 31, 0.5);
+  box-shadow: 0 0 10px constants.$dark-shadow-5;
 }
 
 .flagAndText {
   display: flex;
   justify-content: space-between;
+  // gap: 9.38%;
+  gap: 6%;
 }
 
 .flag {
@@ -54,11 +58,12 @@
 }
 
 .text {
-  width: 600px;
+  // width: 600px;
+  width: 46.88%;
   color: constants.$black;
 }
 
-.text {
+.textDark {
   color: white;
 }
 
@@ -75,14 +80,21 @@
   font-size: 15px;
   letter-spacing: 0.3px;
   line-height: 32px;
+
+  // gap: 16%;
+  justify-content: space-between;
 }
 
 .columnL {
-  width: 348px;
+  // width: 348px;
+  width: 42%;
+  min-width: 200px;
 }
 
 .columnR {
-  width: 252px;
+  // width: 252px;
+  width: 42%;
+  min-width: 200px;
 }
 
 .statName {
@@ -105,4 +117,91 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+@media screen and (max-width: 1280px) {
+  .text {
+    width: 50%;
+  }
+
+  .nav {
+    display: block;
+  }
+
+  .buttons {
+    margin-top: 20px;
+  }
+}
+
+
+
+@media screen and (max-width: 960px) {
+  .flagAndText {
+    display: block;
+  }
+
+  .flag {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  .text {
+    width: 80%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+  }
+
+}
+
+@media screen and (max-width: 640px) {
+  .pgPadding {
+    padding-top: 120px;
+  }
+
+  .backBtn {
+    height: 32px;
+    width: 104px;
+    padding-left: 24px;
+    padding-right: 24px;
+    font-size: 14px;
+    margin-bottom: 64px;
+  }
+
+  .text {
+    margin-top: 46px;
+  }
+
+  .heading {
+    font-size: 20px;
+    margin-bottom: 19px;
+  }
+
+  .columns {
+    display: block;
+    font-size: 13px;
+  }
+
+  .columnL {
+    width: 252px;
+  }
+
+  .columnR {
+    margin-top: 32px;
+    width: 252px;
+  }
+
+  .nav {
+    margin-top: 36px;
+  }
+
+  .nav .statName {
+    font-size: 15px;
+  }
+
+  .buttons {
+    margin-top: 18px;
+  }
 }

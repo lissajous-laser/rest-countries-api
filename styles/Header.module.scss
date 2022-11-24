@@ -7,10 +7,10 @@
   place-items: center;
   padding-left: 80px;
   padding-right: 80px;
-  box-shadow: 0 0 10px rgba(191, 191, 191, 0.7);
+  box-shadow: 0 0 10px constants.$light-shadow-5;
   background-color: constants.$off-white;
   color: constants.$black;
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
   z-index: 2;
@@ -19,7 +19,7 @@
 .headerContainerDark {
   background-color: constants.$gray-blue;
   color: white;
-  box-shadow: 0 0 10px rgba(31, 31, 31, 0.6);
+  box-shadow: 0 0 10px constants.$dark-shadow-5;
 }
 
 .crescent {
@@ -62,8 +62,8 @@
 @media screen and (max-width: 720px) {
 
   .headerContainer {
-    padding-left: 9.07%;
-    padding-right: 9.07%;
+    padding-left: 4.27%;
+    padding-right: 4.27%;
   }
 
   .h1 {

@@ -4,7 +4,7 @@ import {Dispatch, SetStateAction, useLayoutEffect, useState} from 'react';
 import Select from 'react-select';
 import magnifyingGlassLight from '../public/images/magnifying-glass-gray.svg';
 import magnifyingGlassDark from '../public/images/magnifying-glass-white.svg';
-import {breakPt} from '../resources/constants';
+import {break720} from '../resources/constants';
 import {mulish} from '../resources/fonts';
 import {Region} from '../resources/types';
 import style from '../styles/Filter.module.scss';
@@ -19,30 +19,21 @@ const options: {value: Region, label: string}[] = [
   {value: 'Oceania', label: 'Oceania'}
 ];
 
-export default function Filter({isDark, region, setRegion, searchTerm, setSearchTerm}: {
+export default function Filter({
+  isDark,
+  region,
+  setRegion,
+  searchTerm,
+  setSearchTerm,
+  winWidth
+}: {
   isDark: boolean,
   region: Region,
   setRegion: Dispatch<SetStateAction<Region>>,
   searchTerm: string,
-  setSearchTerm: Dispatch<SetStateAction<string>>}
-) {
-  const [winWidth, setWinWidth] = useState(0);
-
-  useLayoutEffect(() => {
-    setWinWidth(window.innerWidth);
-
-    window.addEventListener(
-      'resize',
-      () => setWinWidth(window.innerWidth)
-    );
-
-    return () => {
-      window.removeEventListener(
-        'resize',
-        () => setWinWidth(window.innerWidth)
-      );
-    }
-  }, [])
+  setSearchTerm: Dispatch<SetStateAction<string>>,
+  winWidth: number
+}) {
 
   return (
     <div
@@ -61,6 +52,7 @@ export default function Filter({isDark, region, setRegion, searchTerm, setSearch
           className={style.searchIcon}
           src={isDark ? magnifyingGlassDark : magnifyingGlassLight}
           alt='Serach icon'
+          priority
         />
         <input
           className={`
@@ -71,7 +63,7 @@ export default function Filter({isDark, region, setRegion, searchTerm, setSearch
           type='text'
           placeholder='Search for a country...'
           onChange={(event) => setSearchTerm(event.target.value)}
-          // value={searchTerm}
+          value={searchTerm}
         />
       </div>
       <Select
@@ -90,11 +82,11 @@ export default function Filter({isDark, region, setRegion, searchTerm, setSearch
         styles={{
           control: (baseStyles, state) => ({
             ...baseStyles,
-            height: winWidth > breakPt ? 56 : 48,
+            height: winWidth > break720 ? 56 : 48,
             width: 200,
             border: 'none',
             paddingLeft: 15,
-            fontSize: winWidth > breakPt ? 14 : 12,
+            fontSize: winWidth > break720 ? 14 : 12,
             fontWeight: 400,
             backgroundColor: isDark ? 'rgb(43, 55, 67)' : 'white',
             borderRadius: 3
@@ -106,7 +98,7 @@ export default function Filter({isDark, region, setRegion, searchTerm, setSearch
           option: (baseStyles) => ({
             ...baseStyles,
             paddingLeft: 25,
-            fontSize: winWidth > breakPt ? 14 : 12,
+            fontSize: winWidth > break720 ? 14 : 12,
 
           })
 

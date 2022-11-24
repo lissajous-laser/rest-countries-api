@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import {useEffect, useState} from 'react';
+import {useEffect, useLayoutEffect, useState} from 'react';
 import Card from '../components/Card';
 import Header from '../components/Header';
 import Filter from '../components/Filter';
@@ -33,6 +33,23 @@ export default function Home() {
   //   }
   // }, [country]);
 
+  const [winWidth, setWinWidth] = useState(0);
+
+  useLayoutEffect(() => {
+    setWinWidth(window.innerWidth);
+
+    window.addEventListener(
+      'resize',
+      () => setWinWidth(window.innerWidth)
+    );
+
+    return () => {
+      window.removeEventListener(
+        'resize',
+        () => setWinWidth(window.innerWidth)
+      );
+    }
+  }, [])
 
   /**
    * @param triesLeft - the max number of times to attempt
@@ -82,6 +99,9 @@ export default function Home() {
         <title>REST Counties API</title>
         <meta name="description" content="Frontend Mentor Challenge"/>
         <link rel="icon" href="/favicon.ico" />
+        <link rel='preconnect' href='https://upload.wikimedia.org'/>
+        <link rel='preconnect' href='https://restcountries.com'/>
+        <link rel='preconnect' href='https://flagcdn.com'/>
       </Head>
       <Header isDark={isDark} setIsDark={setIsDark}/>
       {country !== null && 
@@ -90,24 +110,31 @@ export default function Home() {
           country={country}
           setCountry={setCountry}
           countriesList={countriesList}
+          winWidth={winWidth}
         />
       }
-      <Filter
-        isDark={isDark}
-        region={region}
-        setRegion={setRegion}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-      />
-      <div className={style.gallery}>
-        {filterCountries().map((country) => <Card
-          isDark={isDark}
-          country={country}
-          key={country.name}
-          priority={false}
-          setCountry={setCountry}
-        />)}
-      </div>
+      {country === null &&
+        <>
+          <Filter
+            isDark={isDark}
+            region={region}
+            setRegion={setRegion}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            winWidth={winWidth}
+          />
+          <div className={style.gallery}>
+            {filterCountries().map((country, idx) => <Card
+              isDark={isDark}
+              country={country}
+              key={country.name}
+              priority={idx < 4 ? true : false} // reduce LCP time 
+              setCountry={setCountry}
+            />)}
+          </div>
+        </>
+      }
+
     </div>   
   );
 }

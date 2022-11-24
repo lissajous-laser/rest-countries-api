@@ -47,7 +47,7 @@
   background-color: white;
   border-radius: constants.$border-r;
   height: 56px;
-  box-shadow: 0 0 10px rgba(191, 191, 191, 0.6);
+  box-shadow: 0 0 10px constants.$light-shadow-5;
   padding-left: 8px;
   padding-right: 8px;
   width: 480px;
@@ -55,7 +55,7 @@
 
 .searchIconAndInputDark {
   background-color: constants.$gray-blue;
-  box-shadow: 0 0 10px rgba(31, 31, 31, 0.5);
+  box-shadow: 0 0 10px constants.$dark-shadow-5;
 }
 
 .searchIconAndInput:focus-within {
@@ -66,7 +66,7 @@
   width: 200px;
   background-color: white;
   color: constants.$black;
-  box-shadow: 0 0 10px rgba(191, 191, 191, 0.6);
+  box-shadow: 0 0 10px constants.$light-shadow-5;
   border-radius: 5px;
   font-size: 14px;
   font-weight: 400;
@@ -74,7 +74,7 @@
 }
 
 .dropDownDark {
-  box-shadow: 0 0 10px rgba(31, 31, 31, 0.5);
+  box-shadow: 0 0 10px constants.$dark-shadow-5;
 }
 
 .dropDown:focus {
@@ -91,9 +91,14 @@
 @media screen and (max-width: 720px) {
 
   .filterContainer {
-    padding-top: 104px;
     display: block;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 104px;
     margin-bottom: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 343px;
   }
 
   .searchIconAndInput {

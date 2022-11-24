@@ -7,7 +7,7 @@
   width: 264px;
   height: 336px;
   // border: 1px solid gray;
-  box-shadow: 0 0 10px rgba(191, 191, 191, 0.5);
+  box-shadow: 0 0 10px constants.$light-shadow-5;
   cursor: pointer;
 }
 
@@ -15,7 +15,7 @@
   @extend .cardContainer;
   color: white;
   background-color: constants.$gray-blue;
-  box-shadow: 0 0 10px rgba(31, 31, 31, 0.4);
+  box-shadow: 0 0 10px constants.$dark-shadow-5;
 }
 
 .flag {

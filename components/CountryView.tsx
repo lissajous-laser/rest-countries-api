@@ -2,6 +2,7 @@ import Image from 'next/image';
 import {Dispatch, SetStateAction} from 'react';
 import leftArrowLight from '../public/images/left-arrow-black.svg';
 import leftArrowDark from '../public/images/left-arrow-white.svg';
+import { break1080, break1280, break640, break720 } from '../resources/constants';
 import {mulish} from '../resources/fonts';
 import {Country} from '../resources/types';
 import style from '../styles/CountryView.module.scss';
@@ -11,13 +12,18 @@ export default function CountryView({
   isDark, 
   country, 
   setCountry, 
-  countriesList
+  countriesList,
+  winWidth
 } : {
   isDark: boolean,
   country: Country,
   setCountry: Dispatch<SetStateAction<Country | null>>,
-  countriesList: Country[]
+  countriesList: Country[],
+  winWidth: number
 }) {
+
+  const flagW = 560;
+  const flagH = 400;
 
   const enumerate = (list: string[]) => {
     const itemsWithCommas = list.reduce((acc, curr) => acc + ', ' + curr, '');
@@ -50,7 +56,7 @@ export default function CountryView({
         ${isDark? style.viewContainerDark : ''}
       `}
     >
-      <div className={style.xPadding}>
+      <div className={style.pgPadding}>
         <button
           className={`
             ${style.backBtn}
@@ -71,8 +77,8 @@ export default function CountryView({
             className={style.flag}
             src={country.flags.svg}
             alt={'Flag of ' + country.name}
-            width={560}
-            height={400}
+            width={winWidth > break1280 ? flagW : winWidth > break1080 ? flagW * 0.83 : winWidth > break640 ? flagW * 0.66 : 320}
+            height={winWidth > break1280 ? flagH : winWidth > break1080 ? flagH * 0.83 : winWidth > break640 ? flagH * 0.66 : 229}
           />
           <div className={`${style.text} ${isDark? style.textDark : ''}`}>
             <h2 className={style.heading}>{country.name}</h2>

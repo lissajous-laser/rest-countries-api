@@ -1,7 +1,8 @@
 @use './constants';
 
 .btn {
-  width: 96px;
+  min-width: 72px;
+  max-width: 168px;
   height: 28px;
   white-space: nowrap;
   overflow: clip;
@@ -11,7 +12,7 @@
   border: none;
   border-radius: constants.$border-r;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(191, 191, 191, 0.5);
+  box-shadow: 0 0 10px constants.$light-shadow-5;
   font-size: 14px;
   font-weight: 300;
   padding-left: 8px;
@@ -21,5 +22,5 @@
 .btnDark {
   background-color: constants.$gray-blue;
   color: white;
-  box-shadow: 0 0 10px rgba(31, 31, 31, 0.4);
+  box-shadow: 0 0 10px constants.$dark-shadow-5;
 }
