@@ -18,5 +18,6 @@ module.exports = {
         hostname: 'flagcdn.com'
       }
     ],
+    unoptimized: true,
   },
 }

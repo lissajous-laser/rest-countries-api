@@ -52,7 +52,6 @@ export default function Filter({
           className={style.searchIcon}
           src={isDark ? magnifyingGlassDark : magnifyingGlassLight}
           alt='Serach icon'
-          priority
         />
         <input
           className={`

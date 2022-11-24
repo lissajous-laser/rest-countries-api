@@ -29,7 +29,6 @@ export default function Header({isDark, setIsDark}
         <Image
           className={style.crescent} src={isDark? moonDark : moonLight}
           alt={'Crescent moon icon'}
-          priority
         />
         <div className={`${mulish.className} ${style.btnText}`}>
           Dark Mode
