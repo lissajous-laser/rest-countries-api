@@ -7,7 +7,7 @@
   place-items: center;
   padding-left: 80px;
   padding-right: 80px;
-  box-shadow: 0 0 10px constants.$light-shadow-5;
+  box-shadow: 0 0 10px constants.$light-shadow-6;
   background-color: constants.$off-white;
   color: constants.$black;
   position: absolute;
@@ -19,7 +19,7 @@
 .headerContainerDark {
   background-color: constants.$gray-blue;
   color: white;
-  box-shadow: 0 0 10px constants.$dark-shadow-5;
+  box-shadow: 0 0 10px constants.$dark-shadow-6;
 }
 
 .crescent {

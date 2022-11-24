@@ -21,48 +21,35 @@ export default function Home() {
   // State for the current country being displayed,
   // null represents no selection.
   const [country, setCountry] = useState<Country | null>(null);
+  // State of Window.scrollY from the main view.
+  const [scrollY, setScrollY] = useState<number>(0);
+  const [winWidth, setWinWidth] = useState(0);
 
   useEffect(() => fetchCountriesList(2), []);
-
-
-  // useEffect(() => {
-  //   if (country) {
-  //     document.body.style.overflow = 'hidden';
-  //   } else {
-  //     document.body.style.overflow = 'unset';
-  //   }
-  // }, [country]);
-
-  const [winWidth, setWinWidth] = useState(0);
 
   useLayoutEffect(() => {
     setWinWidth(window.innerWidth);
 
-    window.addEventListener(
-      'resize',
-      () => setWinWidth(window.innerWidth)
-    );
+    const fn = () => setWinWidth(window.innerWidth);
 
-    return () => {
-      window.removeEventListener(
-        'resize',
-        () => setWinWidth(window.innerWidth)
-      );
+    window.addEventListener('resize', fn);
+
+    return () => window.removeEventListener('resize', fn);
+  }, []);
+
+  useEffect(() => {
+    if (country === null) {
+      window.scrollTo(0, scrollY);
     }
-  }, [])
+  }, [country]);
 
   /**
    * @param triesLeft - the max number of times to attempt
    * fetching from the API
    */
   const fetchCountriesList = (triesLeft: number = 1) => {
-    // const maybeCountriesList = await fetch('https://restcountries.com/v2/all');
-    // if (maybeCountriesList.ok) {
-    //   const jsonCountriesList = await maybeCountriesList.json();
-    //   setCountriesList(jsonCountriesList);
-    // }
     if (triesLeft === 0) {
-      alert('The data could not be accessed.'
+      alert('The country data could not be accessed.'
         + '\nPlease try again at a later time.');
     }
 
@@ -76,6 +63,10 @@ export default function Home() {
       });
   }
 
+  /**
+   * @returns List of countries matching search field and
+   * region in drop-down box. 
+   */
   const filterCountries = () => {
     return countriesList.filter((country) => {
 
@@ -123,6 +114,7 @@ export default function Home() {
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
               winWidth={winWidth}
+              setScrollY={setScrollY}
             />
             <div className={style.gallery}>
               {filterCountries().map((country, idx) => <Card
@@ -136,7 +128,7 @@ export default function Home() {
           </>
         }
       </main>
+    </div>
 
-    </div>   
   );
 }

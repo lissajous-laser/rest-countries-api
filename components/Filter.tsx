@@ -1,6 +1,6 @@
 import { Ruge_Boogie } from '@next/font/google';
 import Image from 'next/image';
-import {Dispatch, SetStateAction, useLayoutEffect, useState} from 'react';
+import {Dispatch, SetStateAction, useEffect, useLayoutEffect, useState} from 'react';
 import Select from 'react-select';
 import magnifyingGlassLight from '../public/images/magnifying-glass-gray.svg';
 import magnifyingGlassDark from '../public/images/magnifying-glass-white.svg';
@@ -25,15 +25,25 @@ export default function Filter({
   setRegion,
   searchTerm,
   setSearchTerm,
-  winWidth
+  winWidth,
+  setScrollY
 }: {
   isDark: boolean,
   region: Region,
   setRegion: Dispatch<SetStateAction<Region>>,
   searchTerm: string,
   setSearchTerm: Dispatch<SetStateAction<string>>,
-  winWidth: number
+  winWidth: number,
+  setScrollY: Dispatch<SetStateAction<number>>
 }) {
+
+  useEffect(() => {
+    const fn = () => setScrollY(window.scrollY);
+
+    window.addEventListener('scroll', fn);
+  
+    return () => window.removeEventListener('scroll', fn);
+  }, []);
 
   return (
     <div
@@ -98,7 +108,6 @@ export default function Filter({
             ...baseStyles,
             paddingLeft: 25,
             fontSize: winWidth > break720 ? 14 : 12,
-
           })
 
         }}

@@ -30,12 +30,16 @@
   color: white;
 }
 
+.textInput::placeholder {
+  color: rgb(144, 144, 144);
+}
+
 .textInput:focus {
   outline: 0;
 }
 
 .searchIcon {
-  height: 16px;
+  height: 18px;
   width: 64px;
   padding-left: auto;
   padding-right: auto;
@@ -59,7 +63,7 @@
 }
 
 .searchIconAndInput:focus-within {
-  outline: 1px solid constants.$black;
+  outline: 1px solid rgb(159, 159, 159);
 }
 
 .dropDown {
@@ -103,6 +107,10 @@
 
   .searchIconAndInput {
     height: 48px;
+  }
+
+  .searchIcon {
+    height: 16px;
   }
 
   .textInput {
