@@ -14,8 +14,6 @@
   background-color: constants.$dark-gray-blue;
 }
 
-
-
 .textInput {
   border-width: 0;
   height: 56px;
@@ -68,8 +66,6 @@
 
 .dropDown {
   width: 200px;
-  background-color: white;
-  color: constants.$black;
   box-shadow: 0 0 10px constants.$light-shadow-5;
   border-radius: 5px;
   font-size: 14px;
@@ -79,10 +75,6 @@
 
 .dropDownDark {
   box-shadow: 0 0 10px constants.$dark-shadow-5;
-}
-
-.dropDown:focus {
-  outline: 1px solid constants.$black;
 }
 
 @media screen and (max-width: 880px) {

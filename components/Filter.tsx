@@ -1,6 +1,5 @@
-import { Ruge_Boogie } from '@next/font/google';
 import Image from 'next/image';
-import {Dispatch, SetStateAction, useEffect, useLayoutEffect, useState} from 'react';
+import {Dispatch, SetStateAction, useEffect} from 'react';
 import Select from 'react-select';
 import magnifyingGlassLight from '../public/images/magnifying-glass-gray.svg';
 import magnifyingGlassDark from '../public/images/magnifying-glass-white.svg';
@@ -8,7 +7,6 @@ import {break720} from '../resources/constants';
 import {mulish} from '../resources/fonts';
 import {Region} from '../resources/types';
 import style from '../styles/Filter.module.scss';
-
 
 const options: {value: Region, label: string}[] = [
   {value: 'All', label: 'Filter by Region'},
@@ -27,7 +25,7 @@ export default function Filter({
   setSearchTerm,
   winWidth,
   setScrollY
-}: {
+} : {
   isDark: boolean,
   region: Region,
   setRegion: Dispatch<SetStateAction<Region>>,
@@ -63,7 +61,11 @@ export default function Filter({
           src={isDark ? magnifyingGlassDark : magnifyingGlassLight}
           alt='Serach icon'
         />
+        <label htmlFor='textInput' hidden>
+          Search for a country
+        </label>
         <input
+          id='textInput'
           className={`
             ${style.textInput}
             ${isDark ? style.textInputDark : ''}

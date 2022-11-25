@@ -6,7 +6,6 @@
   background-color: white;
   width: 264px;
   height: 336px;
-  // border: 1px solid gray;
   box-shadow: 0 0 10px constants.$light-shadow-5;
   cursor: pointer;
 }
@@ -31,6 +30,13 @@
 
 .textContainer {
   margin: 21px 24px 0;
+}
+
+.stats {
+  margin-block-start: 0;
+  margin-block-end: 0; 
+  list-style-type: none;
+  padding-inline-start: 0; 
 }
 
 .stat {

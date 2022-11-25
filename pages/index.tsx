@@ -25,7 +25,7 @@ export default function Home() {
   const [scrollY, setScrollY] = useState<number>(0);
   const [winWidth, setWinWidth] = useState(0);
 
-  useEffect(() => fetchCountriesList(2), []);
+  useEffect(() => fetchCountriesList(), []);
 
   useLayoutEffect(() => {
     setWinWidth(window.innerWidth);
@@ -37,6 +37,7 @@ export default function Home() {
     return () => window.removeEventListener('resize', fn);
   }, []);
 
+  // Restores scroll state when exiting country view.
   useEffect(() => {
     if (country === null) {
       window.scrollTo(0, scrollY);
@@ -47,7 +48,7 @@ export default function Home() {
    * @param triesLeft - the max number of times to attempt
    * fetching from the API
    */
-  const fetchCountriesList = (triesLeft: number = 1) => {
+  const fetchCountriesList = (triesLeft: number = 2) => {
     if (triesLeft === 0) {
       alert('The country data could not be accessed.'
         + '\nPlease try again at a later time.');
@@ -75,10 +76,28 @@ export default function Home() {
         .toLowerCase()
         .includes(searchTerm.toLowerCase());
 
-      const regionMatch = region === 'All' ? true : country.region === region;
+      const regionMatch =
+        region === 'All'
+        ? true
+        : country.region === region;
 
       return searchMatch && regionMatch;
     });
+  }
+
+  const createCards = () => {
+    const cardsList = filterCountries().map((country, idx) => (
+      <Card
+        isDark={isDark}
+        country={country}
+        key={country.name}
+        setCountry={setCountry}
+      />
+    ))
+
+    return cardsList.length === 0
+      ? <p>No matching results</p>
+      : cardsList;
   }
 
   return (
@@ -117,13 +136,7 @@ export default function Home() {
               setScrollY={setScrollY}
             />
             <div className={style.gallery}>
-              {filterCountries().map((country, idx) => <Card
-                isDark={isDark}
-                country={country}
-                key={country.name}
-                // priority={idx < 4 ? true : false} // reduce LCP time 
-                setCountry={setCountry}
-              />)}
+              {createCards()}
             </div>
           </>
         }
