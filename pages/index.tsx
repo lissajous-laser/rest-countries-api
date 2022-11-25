@@ -9,9 +9,6 @@ import {Country, Region} from '../resources/types';
 import style from '../styles/Home.module.scss';
 import CountryView from '../components/CountryView';
 
-
-
-
 export default function Home() {
   const [countriesList, setCountriesList] = useState<Country[]>([]);
   const [isDark, setIsDark] = useState<boolean>(false);
@@ -86,18 +83,24 @@ export default function Home() {
   }
 
   const createCards = () => {
-    const cardsList = filterCountries().map((country, idx) => (
+    if (countriesList.length === 0) {
+      return <p>Retrieving data...</p>;
+    }
+
+    const filteredCountries = filterCountries();
+
+    if (filteredCountries.length === 0) {
+      return <p>No matching results</p>;
+    }
+
+    return filteredCountries.map((country, idx) => (
       <Card
         isDark={isDark}
         country={country}
         key={country.name}
         setCountry={setCountry}
       />
-    ))
-
-    return cardsList.length === 0
-      ? <p>No matching results</p>
-      : cardsList;
+    ));
   }
 
   return (
@@ -142,6 +145,5 @@ export default function Home() {
         }
       </main>
     </div>
-
   );
 }
