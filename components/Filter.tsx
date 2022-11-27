@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import {Dispatch, SetStateAction, useEffect} from 'react';
+import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import Select from 'react-select';
 import magnifyingGlassLight from '../public/images/magnifying-glass-gray.svg';
 import magnifyingGlassDark from '../public/images/magnifying-glass-white.svg';
@@ -17,6 +17,11 @@ const options: {value: Region, label: string}[] = [
   {value: 'Oceania', label: 'Oceania'}
 ];
 
+
+/**
+ * Contains text input for search, down-down for region,
+ * and the listener for scoll state.
+ */
 export default function Filter({
   isDark,
   region,
@@ -35,12 +40,23 @@ export default function Filter({
   setScrollY: Dispatch<SetStateAction<number>>
 }) {
 
-  useEffect(() => {
-    const fn = () => setScrollY(window.scrollY);
+  // Stores state of debouncing mechanism.
+  const [lastTimeout, setLastTimeout] = useState(setTimeout(() => {}, 0));
 
-    window.addEventListener('scroll', fn);
+  useEffect(() => {
+
+    // Handler is debounced.
+    const scrollHandler = () => {
+      const newTimeout =
+        setTimeout(() => {setScrollY(window.scrollY)}, 400);
+
+      clearTimeout(lastTimeout);
+      setLastTimeout(newTimeout);
+    }
+
+    window.addEventListener('scroll', scrollHandler);
   
-    return () => window.removeEventListener('scroll', fn);
+    return () => window.removeEventListener('scroll', scrollHandler);
   }, []);
 
   return (
