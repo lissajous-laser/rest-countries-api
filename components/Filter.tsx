@@ -75,7 +75,7 @@ export default function Filter({
         <Image
           className={style.searchIcon}
           src={isDark ? magnifyingGlassDark : magnifyingGlassLight}
-          alt='Serach icon'
+          alt='Search icon'
         />
         <label htmlFor='textInput' hidden>
           Search for a country

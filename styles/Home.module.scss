@@ -4,10 +4,13 @@
   background-color: constants.$off-white;
   min-height: 100vh;
   color: constants.$black;
+
 }
 
 .containerDark {
   background-color: constants.$dark-gray-blue;
+  color: white;
+
 }
 
 .gallery {
@@ -20,6 +23,12 @@
   padding-bottom: 74px;
 }
 
-@media screen and (max-width: 720px) {
+.msg {
+  font-size: 14px;
+}
 
+@media screen and (max-width: 720px) {
+  .msg {
+    font-size: 12px;
+  }
 }

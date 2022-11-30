@@ -84,13 +84,13 @@ export default function Home() {
 
   const createCards = () => {
     if (countriesList.length === 0) {
-      return <p>Retrieving data...</p>;
+      return <p className={style.msg}>Retrieving data...</p>;
     }
 
     const filteredCountries = filterCountries();
 
     if (filteredCountries.length === 0) {
-      return <p>No matching results</p>;
+      return <p className={style.msg}>No matching results</p>;
     }
 
     return filteredCountries.map((country, idx) => (
