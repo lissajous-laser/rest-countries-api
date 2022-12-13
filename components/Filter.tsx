@@ -77,11 +77,7 @@ export default function Filter({
           src={isDark ? magnifyingGlassDark : magnifyingGlassLight}
           alt='Search icon'
         />
-        <label htmlFor='textInput' hidden>
-          Search for a country
-        </label>
         <input
-          id='textInput'
           className={`
             ${style.textInput}
             ${isDark ? style.textInputDark : ''}
@@ -91,6 +87,7 @@ export default function Filter({
           placeholder='Search for a country...'
           onChange={(event) => setSearchTerm(event.target.value)}
           value={searchTerm}
+          aria-label='Search for a country'
         />
       </div>
       <Select
