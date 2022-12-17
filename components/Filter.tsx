@@ -1,3 +1,4 @@
+import { selectOptions } from '../resources/constants';
 import Image from 'next/image';
 import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import Select from 'react-select';
@@ -7,15 +8,6 @@ import {break720} from '../resources/constants';
 import {mulish} from '../resources/fonts';
 import {Region} from '../resources/types';
 import style from '../styles/Filter.module.scss';
-
-const options: {value: Region, label: string}[] = [
-  {value: 'All', label: 'Filter by Region'},
-  {value: 'Africa', label: 'Africa'},
-  {value: 'Americas', label: 'America'},
-  {value: 'Asia', label: 'Asia'},
-  {value: 'Europe', label: 'Europe'},
-  {value: 'Oceania', label: 'Oceania'}
-];
 
 
 /**
@@ -83,7 +75,7 @@ export default function Filter({
             ${isDark ? style.textInputDark : ''}
             ${mulish.className}`
           }
-          type='text'
+          type='search'
           placeholder='Search for a country...'
           onChange={(event) => setSearchTerm(event.target.value)}
           value={searchTerm}
@@ -96,8 +88,8 @@ export default function Filter({
           ${mulish.className}
           ${isDark ? style.dropDownDark : ''}
         `}
-        options={options}
-        defaultValue={options[0]}
+        options={selectOptions}
+        defaultValue={selectOptions[0]}
         onChange={(event) => {
           if (event !== null) {
             setRegion(event.value);

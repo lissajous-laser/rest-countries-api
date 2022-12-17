@@ -5,9 +5,13 @@ import moonDark from '../public/images/moon-filled-white.svg';
 import {mulish} from '../resources/fonts';
 import style from '../styles/Header.module.scss';
 
-export default function Header({isDark, setIsDark}
-  : {isDark: boolean, setIsDark: Dispatch<SetStateAction<boolean>>}
-) {
+export default function Header({
+  isDark,
+  setIsDark
+} : {
+  isDark: boolean,
+  setIsDark: Dispatch<SetStateAction<boolean>>
+}) {
 
   const toggleDarkMode = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
