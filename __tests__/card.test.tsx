@@ -2,11 +2,11 @@ import {expect, test} from '@jest/globals';
 import {render, screen} from '@testing-library/react';
 import { Dispatch, SetStateAction } from 'react';
 import Card from '../components/Card';
-import { sampleCountry } from '../resources/constants';
+import { sampleCountryAus } from '../resources/constants';
 
 const cardProps = {
   isDark: true,
-  country: sampleCountry,
+  country: sampleCountryAus,
   setCountry: () => {}
 };
 
@@ -21,7 +21,7 @@ test('country name is rendered', () => {
 
 test('country population is rendered', () => {
   const countryPop = screen.getByText(
-    sampleCountry.population.toLocaleString('en')
+    sampleCountryAus.population.toLocaleString('en')
   );
 
   expect(countryPop).toBeDefined();

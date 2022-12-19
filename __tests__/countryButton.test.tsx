@@ -1,11 +1,11 @@
 import {expect, test} from '@jest/globals';
 import { fireEvent, render, screen } from '@testing-library/react';
 import CountryButton from '../components/CountryButton';
-import { sampleCountry } from '../resources/constants';
+import { sampleCountryAus } from '../resources/constants';
 
 const countryButtonProps = {
   isDark: true,
-  country: sampleCountry,
+  country: sampleCountryAus,
   setCountry: jest.fn(() => {})
 }
 
@@ -14,7 +14,7 @@ beforeEach(() => {
 });
 
 test('name of country is rendered', () => {
-  expect(screen.getByText(sampleCountry.name)).toBeDefined();
+  expect(screen.getByText(sampleCountryAus.name)).toBeDefined();
 });
 
 test('setCountry called when button is fired', () => {

@@ -1,8 +1,7 @@
 import {expect, test} from '@jest/globals';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { SetStateAction } from 'react';
 import Filter from '../components/Filter';
-import { break1080, selectOptions } from '../resources/constants';
+import { break1080 } from '../resources/constants';
 import { Region } from '../resources/types';
 
 const defaultRegion: Region = 'All'; 
@@ -10,16 +9,12 @@ const defaultRegion: Region = 'All';
 const filterProps = {
   isDark: true,
   region: defaultRegion,
-  setRegion: () => {},
+  setRegion: jest.fn(() => {}),
   searchTerm: '',
-  setSearchTerm: () => {},
+  setSearchTerm: jest.fn(() => {}),
   winWidth: break1080,
-  setScrollY: () => {}
+  setScrollY: jest.fn(() => {})
 }
-
-beforeEach(() => {
-
-});
 
 test('filter has a text input', () => {
   render(<Filter {...filterProps}/>);
@@ -27,16 +22,17 @@ test('filter has a text input', () => {
   expect(screen.getByRole('searchbox')).toBeDefined();
 });
 
-test('text input value controlled by searchTerm prop', () => {
+test('text input value determined by searchTerm prop', () => {
   render(<Filter {...filterProps} searchTerm='Ukraine'/>);
 
-  const textBox = screen.getByRole<HTMLInputElement>('searchbox')
+  const textBox = screen.getByRole<HTMLInputElement>('searchbox');
   expect(textBox.value).toBe('Ukraine');
 });
 
-test('text input value controlled by searchTerm prop', () => {
-  render(<Filter {...filterProps} searchTerm='Ukraine'/>);
+test('changing text input calls setSearchTerm', () => {
+  render(<Filter {...filterProps}/>);
 
-  const textBox = screen.getByRole<HTMLInputElement>('searchbox')
-  expect(textBox.value).toBe('Ukraine');
+  const textBox = screen.getByRole<HTMLInputElement>('searchbox');
+  fireEvent.change(textBox, {target: {value: 'Aus'}});
+  expect(filterProps.setSearchTerm).toBeCalled();
 });
