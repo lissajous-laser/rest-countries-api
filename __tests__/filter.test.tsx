@@ -1,5 +1,5 @@
 import {expect, test} from '@jest/globals';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { SetStateAction } from 'react';
 import Filter from '../components/Filter';
 import { break1080, selectOptions } from '../resources/constants';
@@ -17,8 +17,26 @@ const filterProps = {
   setScrollY: () => {}
 }
 
+beforeEach(() => {
+
+});
+
 test('filter has a text input', () => {
   render(<Filter {...filterProps}/>);
 
   expect(screen.getByRole('searchbox')).toBeDefined();
+});
+
+test('text input value controlled by searchTerm prop', () => {
+  render(<Filter {...filterProps} searchTerm='Ukraine'/>);
+
+  const textBox = screen.getByRole<HTMLInputElement>('searchbox')
+  expect(textBox.value).toBe('Ukraine');
+});
+
+test('text input value controlled by searchTerm prop', () => {
+  render(<Filter {...filterProps} searchTerm='Ukraine'/>);
+
+  const textBox = screen.getByRole<HTMLInputElement>('searchbox')
+  expect(textBox.value).toBe('Ukraine');
 });
