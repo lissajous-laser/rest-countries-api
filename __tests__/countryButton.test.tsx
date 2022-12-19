@@ -9,13 +9,15 @@ const countryButtonProps = {
   setCountry: jest.fn(() => {})
 }
 
-test('name of country is rendered', () => {
+beforeEach(() => {
   render(<CountryButton {...countryButtonProps}/>);
+});
+
+test('name of country is rendered', () => {
   expect(screen.getByText(sampleCountry.name)).toBeDefined();
 });
 
 test('setCountry called when button is fired', () => {
-  render(<CountryButton {...countryButtonProps}/>);
   fireEvent.click(screen.getByRole('button'));
   expect(countryButtonProps.setCountry).toBeCalled();
 });

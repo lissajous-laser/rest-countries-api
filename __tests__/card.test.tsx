@@ -10,16 +10,16 @@ const cardProps = {
   setCountry: () => {}
 };
 
-test('country name is rendered', () => {
+beforeEach(() => {
   render(<Card {...cardProps}/>);
+})
 
+test('country name is rendered', () => {
   const countryName = screen.getByText('Australia');
   expect(countryName).toBeDefined();
 });
 
 test('country population is rendered', () => {
-  render(<Card {...cardProps}/>);
-
   const countryPop = screen.getByText(
     sampleCountry.population.toLocaleString('en')
   );
@@ -28,8 +28,6 @@ test('country population is rendered', () => {
 });
 
 test('country flag is rendered', () => {
-  render(<Card {...cardProps}/>);
-
   const countryFlag = screen.getByRole('img');
   expect(countryFlag).toBeDefined();
 });
