@@ -8,6 +8,7 @@ import {break720} from '../resources/constants';
 import {mulish} from '../resources/fonts';
 import {Region} from '../resources/types';
 import style from '../styles/Filter.module.scss';
+import { Black_And_White_Picture } from '@next/font/google';
 
 
 /**
@@ -115,6 +116,7 @@ export default function Filter({
             ...baseStyles,
             paddingLeft: 25,
             fontSize: winWidth > break720 ? 14 : 12,
+            color: 'rgb(20, 20, 20)',
           })
 
         }}
